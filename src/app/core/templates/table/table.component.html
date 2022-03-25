@@ -1,6 +1,6 @@
 <div class="wrapper">
-  <div class="header">{{name}}</div>
-  <table mat-table [dataSource]="columns" class="table">
+  <div class="header">{{market.name}}</div>
+  <table mat-table [dataSource]="market.odds" class="table">
     <ng-container matColumnDef="time_str">
       <th mat-header-cell *matHeaderCellDef>Time</th>
       <td mat-cell *matCellDef="let element"> {{element.time_str}} </td>
@@ -20,6 +20,10 @@
     <ng-container matColumnDef="row3">
       <th mat-header-cell *matHeaderCellDef>Under</th>
       <td mat-cell *matCellDef="let element"> {{element.row3}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rating">
+      <th mat-header-cell *matHeaderCellDef>Rating</th>
+      <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayRows"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: displayRows"></tr>

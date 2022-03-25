@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { GamesListItem, OddsList } from '../interfaces/bet365';
+import { GamesListItem, Market } from '../interfaces/bet365';
 
 @Injectable({
   providedIn: 'root',
@@ -35,11 +35,11 @@ export class Bet365Service {
     });
   }
 
-  football_odds(game_id: string): Observable<OddsList> {
-    return this.http.get<OddsList>(`/api/v1/football/game?game_id=${game_id}`);
+  football_odds(game_id: string): Observable<Market[]> {
+    return this.http.get<Market[]>(`/api/v1/football/game?game_id=${game_id}`);
   }
 
-  basketball_odds(game_id: string): Observable<OddsList> {
-    return this.http.get<OddsList>(`/api/v1/basketball/game?game_id=${game_id}`);
+  basketball_odds(game_id: string): Observable<Market[]> {
+    return this.http.get<Market[]>(`/api/v1/basketball/game?game_id=${game_id}`);
   }
 }

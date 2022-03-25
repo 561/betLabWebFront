@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { Bet365Service } from '../../services/bet365.service';
 import { GamesListItem } from '../../interfaces/bet365';
 import { Observable, Subject, switchMap, takeUntil } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-games-statuses-panel',
@@ -15,7 +15,7 @@ export class GamesStatusesPanelComponent implements OnInit, OnDestroy {
   @Input() sportId: number;
   @Input() sport: string;
   loading = true;
-  subscribtion: Observable<GamesListItem[]>;
+  subscription$: Observable<GamesListItem[]>;
   destroy$ = new Subject<void>();
 
   constructor(
@@ -28,6 +28,7 @@ export class GamesStatusesPanelComponent implements OnInit, OnDestroy {
 
   goToItem(status: string): void {
     this.router.navigate(['/dashboard', this.sport, status], { relativeTo: this.activatedRoute });
+    this.changeValue(status);
   }
 
   ngOnInit(): void {
@@ -39,29 +40,29 @@ export class GamesStatusesPanelComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  getFetch(value: string): Observable<GamesListItem[]> {
+    if (value === 'live') {
+      return this.bet365.live_games(this.sportId);
+    }
+    if (value === 'prematch') {
+      return this.bet365.prematch_games(this.sportId);
+    }
+    return this.bet365.finished_games(this.sportId);
+  }
+
+
   changeValue(value: string): void {
     this.typeToggle = value;
     this.loading = true;
     this.typeEmitter.emit(undefined);
-    if (value === 'live') {
-      this.subscribtion = this.bet365.live_games(this.sportId);
-    } else if (value === 'prematch') {
-      this.subscribtion = this.bet365.prematch_games(this.sportId);
-    } else {
-      this.subscribtion = this.bet365.finished_games(this.sportId);
-    }
-    this.subscribtion.pipe(
-      takeUntil(this.destroy$),
-      switchMap(() => this.subscribtion),
-    ).subscribe((data) => {
+    this.getFetch(value).subscribe((data) => {
       this.loading = false;
       if (Array.isArray(data)) {
         this.typeEmitter.emit(data);
       } else {
-        console.log(data);
         this.typeEmitter.emit([]);
       }
-    }, error => {
+    }, (error) => {
       console.log(error);
       this.typeEmitter.emit([]);
     });

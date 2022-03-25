@@ -89,23 +89,24 @@ export interface GamesListItem {
   time_status: string;
 }
 
-export interface OddsList {
-  '1X2': Odds[];
-  'Asian Handicap': Odds[];
-  'O/U': Odds[];
-  '1st Half Asian Handicap': Odds[];
-  '1st Half Goal Line': Odds[];
+export interface Market {
+  'name': string;
+  'odds': Odd[];
+  'firstLine'?: Odd;
+  'firstPrematch'?: Odd;
 }
 
-export interface Odds {
+
+export interface Odd {
   add_time: string;
   id: string;
   row1: string;
   row2: string;
   row3: string;
-  rating: string;
   ss: string;
   time_str: string;
+  solved?: number;
+  rating?: number;
 }
 
 export interface LiveResult {

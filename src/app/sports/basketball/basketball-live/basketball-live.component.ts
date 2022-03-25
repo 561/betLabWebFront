@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OddsList } from '../../../core/interfaces/bet365';
+import { Market } from '../../../core/interfaces/bet365';
 import { ActivatedRoute } from '@angular/router';
 import { Bet365Service } from '../../../core/services/bet365.service';
 
@@ -10,7 +10,7 @@ import { Bet365Service } from '../../../core/services/bet365.service';
 })
 export class BasketballLiveComponent implements OnInit {
   id: string;
-  tables: OddsList;
+  markets: Market[];
   loading = true;
 
   constructor(
@@ -23,7 +23,7 @@ export class BasketballLiveComponent implements OnInit {
   ngOnInit(): void {
     this.bet365.basketball_odds(this.id).subscribe((data) => {
       this.loading = false;
-      this.tables = data;
+      this.markets = data;
     });
   }
 }
