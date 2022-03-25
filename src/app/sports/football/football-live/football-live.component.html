@@ -1,0 +1,4 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<div class="tables">
+  <app-table *ngFor="let table of tables | keyvalue" [name]="table.key" [columns]="table.value"></app-table>
+</div>

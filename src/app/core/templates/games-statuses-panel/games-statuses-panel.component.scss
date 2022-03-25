@@ -1,0 +1,17 @@
+mat-button-toggle-group, mat-progress-spinner {
+  margin: 10px auto;
+  color: var(--text-color);
+
+  .mat-button-toggle-checked {
+    background-color: var(--light-grey-color);
+  }
+
+  ::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 30px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}

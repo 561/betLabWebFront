@@ -1,0 +1,9 @@
+.tables {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  app-table {
+    margin: 0 15px;
+  }
+}

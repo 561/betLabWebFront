@@ -1,0 +1,16 @@
+.navigation {
+  display: flex;
+  height: 45px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-bottom: 1px solid var(--grey-color);
+  width: 100%;
+}
+
+.nav-button {
+  margin: 5px;
+  color: var(--text-color);
+}
+
+.active {
+  background: var(--light-grey-color);
+}

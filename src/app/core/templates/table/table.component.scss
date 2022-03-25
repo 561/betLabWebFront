@@ -1,0 +1,41 @@
+
+.wrapper {
+  margin-top: 30px;
+
+  td, th {
+    font-size: 10px;
+    width: 40px;
+    padding: 0;
+    text-align: center;
+  }
+
+
+  tr {
+    height: 25px;
+  }
+
+  table {
+
+    ::ng-deep tbody {
+      tr {
+        &:hover {
+          background: rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+  }
+
+  .table {
+    border: rgba(0, 0, 0, 0.13) 1px solid;
+    border-bottom: none;
+  }
+
+  .header {
+    width: 200px;
+    font-size: 13px;
+    text-align: center;
+    padding: 5px 0;
+    border: rgba(0, 0, 0, 0.13) solid 1px;
+    border-top: var(--primary-color) solid 2px;
+  }
+}

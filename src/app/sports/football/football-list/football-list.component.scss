@@ -1,0 +1,57 @@
+
+mat-list-item:hover {
+  background-color: #ccc;
+}
+
+.list, .error {
+  margin: 10px 10%;
+}
+
+.error {
+  border-bottom: var(--primary-color) 1px solid;
+  text-align: center;
+}
+
+::ng-deep mat-list-item {
+  max-height: 30px;
+
+  &:last-child {
+    ::ng-deep .mat-list-item-content {
+      border-bottom: 0;
+    }
+  }
+
+  ::ng-deep .mat-list-item-content {
+    max-height: 30px;
+    padding: 0 !important;
+    border-bottom: var(--primary-color) 1px solid;
+  }
+}
+
+.game {
+  display: flex;
+  font-size: 10px;
+
+  .time, .scores {
+    text-align: center;
+    width: 20px;
+    padding: 0 10px;
+  }
+
+  .league {
+    width: 200px;
+  }
+
+  .home, away {
+    width: 200px;
+  }
+
+  .home {
+    text-align: right;
+  }
+
+  .away {
+    text-align: left;
+  }
+
+}

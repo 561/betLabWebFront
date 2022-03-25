@@ -1,0 +1,58 @@
+
+mat-list-item:hover {
+  background-color: #ccc;
+}
+
+mat-button-toggle-group, mat-progress-spinner {
+  margin: 10px auto;
+}
+
+.list, .error {
+  margin: 10px 10%;
+}
+
+.error {
+  border-bottom: var(--primary-color) 1px solid;
+  text-align: center;
+}
+
+::ng-deep mat-list-item {
+  max-height: 30px;
+
+  &:last-child {
+    ::ng-deep .mat-list-item-content {
+      border-bottom: 0;
+    }
+  }
+
+  ::ng-deep .mat-list-item-content {
+    max-height: 30px;
+    padding: 0 !important;
+    border-bottom: var(--primary-color) 1px solid;
+  }
+}
+
+.game {
+  display: flex;
+  font-size: 10px;
+  width: 100%;
+
+  .time, .scores {
+    text-align: center;
+    width: 11%;
+    padding: 0 10px;
+  }
+
+  .league, .home, .away {
+    width: 26%;
+  }
+
+  .home {
+    text-align: right;
+  }
+
+  .away {
+    text-align: left;
+  }
+
+}

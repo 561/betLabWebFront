@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <mat-button-toggle-group
+    (change)="goToItem($event.value)"
+    #group="matButtonToggleGroup"
+    [value]="typeToggle"
+  >
+    <mat-button-toggle
+      value="prematch"
+      routerLinkActive="active"
+    >
+      PREMATCH
+    </mat-button-toggle>
+    <mat-button-toggle
+      value="live"
+      routerLinkActive="active"
+    >
+      LIVE
+    </mat-button-toggle>
+    <mat-button-toggle
+      value="finished"
+      routerLinkActive="active"
+    >
+      FINISHED
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+  <mat-progress-spinner *ngIf="loading" mode="indeterminate"></mat-progress-spinner>
+</div>

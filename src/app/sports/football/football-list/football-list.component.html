@@ -1,0 +1,32 @@
+<app-games-statuses-panel
+  [sportId]="sportID"
+  [sport]="'football'"
+  (typeEmitter)="typeToggleChange($event)"
+></app-games-statuses-panel>
+<ng-container *ngIf="games">
+  <div *ngIf="games.length === 0" class="error">no games now</div>
+  <mat-list class="list">
+    <mat-list-item *ngFor="let game of games" (click)="openGame(game.id)">
+      <div class="game">
+        <div *ngIf="game.time; else notTime" class="time">
+          {{game.time.tm}}
+        </div>
+        <ng-template #notTime class="time">
+          ---
+        </ng-template>
+        <div class="league">
+          {{game.league}}:
+        </div>
+        <div class="home">
+          {{game.home}}
+        </div>
+        <div class="scores">
+          {{game.scores}}
+        </div>
+        <div class="away">
+          {{game.away}}
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</ng-container>
