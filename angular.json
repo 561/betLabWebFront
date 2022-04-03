@@ -72,12 +72,18 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "browserTarget": "your-application-name:build",
+            "proxyConfig": "src/proxy.config.json"
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
+              "proxyConfig": "proxy.config.json",
               "browserTarget": "betLabWeb:build:production"
             },
             "development": {
+              "proxyConfig": "proxy.config.json",
               "browserTarget": "betLabWeb:build:development"
             }
           },
