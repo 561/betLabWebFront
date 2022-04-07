@@ -89,6 +89,26 @@
           },
           "defaultConfiguration": "development"
         },
+        "serveProd": {
+          "options": {
+            "browserTarget": "your-application-name:build",
+            "proxyConfig": "src/proxy.config.json",
+            "host": "0.0.0.0",
+            "port": 1738
+          },
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "proxyConfig": "proxy.config.json",
+              "browserTarget": "betLabWeb:build:production"
+            },
+            "development": {
+              "proxyConfig": "proxy.config.json",
+              "browserTarget": "betLabWeb:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
