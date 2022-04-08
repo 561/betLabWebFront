@@ -9,7 +9,7 @@
         <div class="game">
           <div class="time">
             <div *ngIf="this.typeOfGames == 'live'; else gameTime">
-              {{game.time.tm}}
+              {{game.time.q}} - {{game.time.tm | number:'2.0-0'}}:{{game.time.ts | number:'2.0-0'}}
             </div>
             <ng-template #gameTime>
               {{+game.startTime * 1000 | date: 'd/MM HH:mm'}}
