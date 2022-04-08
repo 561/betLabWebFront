@@ -7,14 +7,14 @@
     <mat-list class="list">
       <mat-list-item *ngFor="let game of games" (click)="openGame(game.id)">
         <div class="game">
-          <div *ngIf="game.time; else notTime" class="time">
-            {{game.time.q}} - {{game.time.tm | number:'2.0-0'}}:{{game.time.ts | number:'2.0-0'}}
-          </div>
-          <ng-template #notTime>
-            <div class="time">
-              ---
+          <div class="time">
+            <div *ngIf="this.typeOfGames == 'live'; else gameTime">
+              {{game.time.tm}}
             </div>
-          </ng-template>
+            <ng-template #gameTime>
+              {{+game.startTime * 1000 | date: 'd/MM HH:mm'}}
+            </ng-template>
+          </div>
           <div class="league">
             {{game.league}}:
           </div>
