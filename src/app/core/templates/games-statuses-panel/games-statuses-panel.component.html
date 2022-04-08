@@ -1,6 +1,5 @@
 <div class="wrapper">
   <mat-button-toggle-group
-    *ngIf="!loading"
     (change)="goToItem($event.value)"
     #group="matButtonToggleGroup"
     [value]="typeToggle"
@@ -24,5 +23,4 @@
       FINISHED
     </mat-button-toggle>
   </mat-button-toggle-group>
-  <mat-progress-spinner *ngIf="loading" mode="indeterminate"></mat-progress-spinner>
 </div>

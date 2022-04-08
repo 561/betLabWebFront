@@ -85,6 +85,7 @@ export interface GamesListItem {
   away: string;
   league: string;
   scores: string;
+  startTime: string;
   time: Time;
   time_status: string;
 }

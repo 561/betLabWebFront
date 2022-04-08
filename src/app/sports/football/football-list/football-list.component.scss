@@ -34,7 +34,7 @@ mat-list-item:hover {
 
   .time, .scores {
     text-align: center;
-    width: 20px;
+    width: 55px;
     padding: 0 10px;
   }
 
@@ -54,4 +54,9 @@ mat-list-item:hover {
     text-align: left;
   }
 
+}
+
+mat-spinner {
+  margin: 10px auto;
+  color: var(--text-color);
 }

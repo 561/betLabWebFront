@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Bet365Service } from '../../services/bet365.service';
-import { GamesListItem } from '../../interfaces/bet365';
-import { Observable, Subject, switchMap, takeUntil } from 'rxjs';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GamesService } from '../../../sports/games.service';
 
 @Component({
   selector: 'app-games-statuses-panel',
@@ -11,15 +11,12 @@ import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 })
 export class GamesStatusesPanelComponent implements OnInit, OnDestroy {
   typeToggle: string;
-  @Output() typeEmitter = new EventEmitter<GamesListItem[]>();
-  @Input() sportId: number;
   @Input() sport: string;
-  loading = true;
-  subscription$: Observable<GamesListItem[]>;
   destroy$ = new Subject<void>();
 
   constructor(
     private bet365: Bet365Service,
+    private gamesService: GamesService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
   ) {
@@ -40,32 +37,8 @@ export class GamesStatusesPanelComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  getFetch(value: string): Observable<GamesListItem[]> {
-    if (value === 'live') {
-      return this.bet365.live_games(this.sportId);
-    }
-    if (value === 'prematch') {
-      return this.bet365.prematch_games(this.sportId);
-    }
-    return this.bet365.finished_games(this.sportId);
-  }
-
-
   changeValue(value: string): void {
     this.typeToggle = value;
-    this.loading = true;
-    this.typeEmitter.emit(undefined);
-    this.getFetch(value).subscribe((data) => {
-      this.loading = false;
-      if (Array.isArray(data)) {
-        this.typeEmitter.emit(data);
-      } else {
-        this.typeEmitter.emit([]);
-      }
-    }, (error) => {
-      console.log(error);
-      this.typeEmitter.emit([]);
-    });
+    this.gamesService.setStatusOfGames(value);
   }
-
 }
