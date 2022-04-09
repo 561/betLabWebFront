@@ -16,16 +16,18 @@
             </ng-template>
           </div>
           <div class="league">
-            {{game.league}}:
+            <img width="20px" height="15px" src="https://assets.betsapi.com/v2/images/flags/{{game.league.cc}}.svg"
+                 alt="">
+            {{game.league.name}}:
           </div>
           <div class="home">
-            {{game.home}}
+            {{game.home.name}}
           </div>
           <div class="scores">
             {{game.scores}}
           </div>
           <div class="away">
-            {{game.away}}
+            {{game.away.name}}
           </div>
         </div>
       </mat-list-item>

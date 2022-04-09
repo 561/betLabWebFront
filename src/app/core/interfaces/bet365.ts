@@ -79,11 +79,17 @@ export interface Time {
   tt: string;
 }
 
+export interface Country {
+  id: string;
+  name: string;
+  cc: string;
+}
+
 export interface GamesListItem {
   id: string;
-  home: string;
-  away: string;
-  league: string;
+  home: Country;
+  away: Country;
+  league: Country;
   scores: string;
   startTime: string;
   time: Time;
