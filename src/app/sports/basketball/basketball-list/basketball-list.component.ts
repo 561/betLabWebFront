@@ -46,7 +46,7 @@ export class BasketballListComponent implements OnInit, OnDestroy {
   }
 
   openGame(id: string): void {
-    this.router.navigate(['/dashboard', 'basketball_live', 'game', id]);
+    this.router.navigate(['/dashboard', 'basketball', 'game', id]);
   }
 
   ngOnDestroy(): void {
