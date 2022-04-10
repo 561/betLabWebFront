@@ -27,7 +27,7 @@
     <ng-container matColumnDef="rating">
       <th mat-header-cell *matHeaderCellDef>Rating</th>
       <td mat-cell [style]="{ 'background-color': ' rgba(' + getRatingColor(element.rating) + ')'}"
-          *matCellDef="let element"> {{element.rating || '-'}} </td>
+          *matCellDef="let element"> {{element.rating}} </td>
     </ng-container>
     <ng-container matColumnDef="world_time">
       <th mat-header-cell *matHeaderCellDef>Time</th>

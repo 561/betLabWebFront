@@ -1,5 +1,5 @@
 <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 <app-game-info-header [game]="game" [sport]="'basketball'"></app-game-info-header>
 <div class="tables">
-  <app-table *ngFor="let market of game.markets" [market]="market"></app-table>
+  <app-table *ngFor="let market of game.markets" [market]="market" [signalRating]="6"></app-table>
 </div>

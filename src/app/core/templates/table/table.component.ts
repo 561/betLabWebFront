@@ -8,6 +8,7 @@ import { Market } from '../../interfaces/bet365';
 })
 export class TableComponent implements OnInit {
   @Input() market: Market;
+  @Input() signalRating: number;
   displayRows: string[];
 
   constructor() {
@@ -22,15 +23,13 @@ export class TableComponent implements OnInit {
   }
 
   getRatingColor(rating: number): string {
-    const signalRating = 0.6;
     const green = rating > 0 ? 200 : 100;
     const red = rating < 0 ? 200 : 100;
-    const ratio = Math.abs(rating / signalRating);
+    const ratio = Math.abs(rating / this.signalRating);
     let opacity = 0;
     if (ratio >= 1) {
       opacity = 1;
-    }
-    if (ratio >= 0.5) {
+    } else if (ratio >= 0.5) {
       opacity = 0.8 * (ratio - 0.4);
     }
     return `${red}, ${green}, 100, ${opacity}`;

@@ -24,11 +24,11 @@
             {{game.home.name}}
           </div>
           <div class="scores">
-            <div *ngIf="this.typeOfGames == 'live'; else vs">
-              {{game.scores}}
+            <div *ngIf="this.typeOfGames == 'prematch'; else vs">
+              vs
             </div>
             <ng-template #vs>
-              vs
+              {{game.scores}}
             </ng-template>
           </div>
           <div class="away">
