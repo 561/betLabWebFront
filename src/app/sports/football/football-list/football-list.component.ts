@@ -46,7 +46,7 @@ export class FootballListComponent implements OnInit, OnDestroy {
   }
 
   openGame(id: string): void {
-    this.router.navigate(['/dashboard', 'football_live', id]);
+    this.router.navigate(['/dashboard', 'football', 'game', id]);
   }
 
   ngOnDestroy(): void {

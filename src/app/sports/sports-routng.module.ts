@@ -6,8 +6,8 @@ import { BasketballListComponent } from './basketball/basketball-list/basketball
 import { BasketballLiveComponent } from './basketball/basketball-live/basketball-live.component';
 
 const routes: Routes = [
-  { path: 'football_live/:id', component: FootballLiveComponent },
-  { path: 'basketball_live/:id', component: BasketballLiveComponent },
+  { path: 'football/game/:id', component: FootballLiveComponent },
+  { path: 'basketball/game/:id', component: BasketballLiveComponent },
   { path: 'football', component: FootballListComponent },
   { path: 'basketball', component: BasketballListComponent },
   { path: 'football/:status', component: FootballListComponent },
