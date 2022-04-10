@@ -72,6 +72,16 @@ export interface LiveGames {
   pager: Pager;
 }
 
+export interface Game {
+  'league': Country;
+  'time': Time;
+  'team1': Country;
+  'team2': Country;
+  'score': string;
+  'markets'?: Market[];
+  'status': string;
+}
+
 export interface Time {
   tm: string;
   ts: string;

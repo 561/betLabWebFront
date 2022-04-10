@@ -1,0 +1,26 @@
+<div class="info-wrapper">
+  <div class="up-line">
+    <div class="league">
+      <img width="32px" height="24px" src="https://assets.betsapi.com/v2/images/flags/{{game.league.cc}}.svg" alt="">
+      <p>{{game.league.name}}</p>
+    </div>
+    <p class="time">
+      <ng-container *ngIf="this.game.status === '1'; else gameTime">
+        <ng-container *ngIf="sport==='basketball'">
+          {{game.time.q}} - {{game.time.tm | number:'2.0-0'}}:{{game.time.ts | number:'2.0-0'}}
+        </ng-container>
+        <ng-container *ngIf="sport==='football'">
+          {{game.time.tm}}
+        </ng-container>
+      </ng-container>
+      <ng-template #gameTime>
+        {{+game.time * 1000 | date: 'd/MM HH:mm'}}
+      </ng-template>
+    </p>
+  </div>
+  <div class="teams-wrapper">
+    <div class="team1">{{game.team1.name}}</div>
+    <div class="score">{{game.score}}</div>
+    <div class="team2">{{game.team2.name}}</div>
+  </div>
+</div>

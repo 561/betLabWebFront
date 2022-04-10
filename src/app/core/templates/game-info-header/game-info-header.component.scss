@@ -1,0 +1,54 @@
+.teams-wrapper {
+  display: flex;
+}
+
+.info-wrapper {
+
+  .time {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+
+  .teams-wrapper {
+    font-size: 16px;
+
+    .team1 {
+      text-align: end;
+      width: 43%;
+    }
+
+    .team2 {
+      text-align: start;
+      width: 43%;
+    }
+
+    .score {
+      width: 14%;
+      text-align: center;
+    }
+
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .league {
+    display: flex;
+  }
+
+  .up-line {
+    font-size: 20px;
+    justify-content: center;
+
+    img {
+      margin: auto 0;
+      margin-right: 10px;
+    }
+
+    display: flex;
+  }
+
+  width: 60%;
+  margin: 10px auto;
+  padding-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}

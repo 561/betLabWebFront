@@ -13,6 +13,7 @@ import { BasketballListComponent } from './basketball/basketball-list/basketball
 import { BasketballLiveComponent } from './basketball/basketball-live/basketball-live.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { GamesStatusesPanelComponent } from '../core/templates/games-statuses-panel/games-statuses-panel.component';
+import { GameInfoHeaderComponent } from '../core/templates/game-info-header/game-info-header.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { GamesStatusesPanelComponent } from '../core/templates/games-statuses-pa
     BasketballListComponent,
     BasketballLiveComponent,
     TableComponent,
+    GameInfoHeaderComponent,
     GamesStatusesPanelComponent,
   ],
   imports: [
