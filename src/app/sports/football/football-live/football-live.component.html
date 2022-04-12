@@ -1,5 +1,13 @@
-<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-<app-game-info-header [game]="game" [sport]="'football'"></app-game-info-header>
-<div class="tables">
-  <app-table *ngFor="let market of game.markets" [market]="market" [signalRating]="0.6"></app-table>
-</div>
+<ng-template #showLoading>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
+<ng-container *ngIf="!loading; else showLoading">
+  <app-game-info-header [game]="game" [sport]="'football'"></app-game-info-header>
+  <app-market-switcher
+    (marketChanged)="onChangeMarket($event)"
+    [markets]="game.markets || []"
+  ></app-market-switcher>
+  <div class="tables">
+    <app-table *ngFor="let market of markets" [market]="market" [signalRating]="0.6"></app-table>
+  </div>
+</ng-container>

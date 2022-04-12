@@ -1,0 +1,52 @@
+<div class="wrapper">
+  <mat-button-toggle-group
+    (change)="switchMarket($event.value)"
+    #group="matButtonToggleGroup"
+    [value]="marketToggle"
+  >
+    <ng-container *ngIf="isMobile; else desktop">
+      <mat-button-toggle
+        value="1X2"
+      >
+        1X2
+      </mat-button-toggle>
+      <mat-button-toggle
+        value="Handicap"
+      >
+        Handicap
+      </mat-button-toggle>
+      <mat-button-toggle
+        value="Total"
+      >
+        Total
+      </mat-button-toggle>
+      <mat-button-toggle
+        value="HT 1X2"
+      >
+        HT 1X2
+      </mat-button-toggle>
+      <mat-button-toggle
+        value="HT Handicap"
+      >
+        HT Handicap
+      </mat-button-toggle>
+      <mat-button-toggle
+        value="HT Total"
+      >
+        HT Total
+      </mat-button-toggle>
+    </ng-container>
+    <ng-template #desktop>
+      <mat-button-toggle
+        value="FT"
+      >
+        FT
+      </mat-button-toggle>
+      <mat-button-toggle
+        value="HT"
+      >
+        HT
+      </mat-button-toggle>
+    </ng-template>
+  </mat-button-toggle-group>
+</div>

@@ -14,6 +14,7 @@ import { BasketballLiveComponent } from './basketball/basketball-live/basketball
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { GamesStatusesPanelComponent } from '../core/templates/games-statuses-panel/games-statuses-panel.component';
 import { GameInfoHeaderComponent } from '../core/templates/game-info-header/game-info-header.component';
+import { MarketSwitcherComponent } from '../core/templates/market-switcher/market-switcher.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { GameInfoHeaderComponent } from '../core/templates/game-info-header/game
     TableComponent,
     GameInfoHeaderComponent,
     GamesStatusesPanelComponent,
+    MarketSwitcherComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,24 @@
+mat-button-toggle-group {
+  margin: 10px auto;
+  color: var(--text-color);
+
+  .mat-button-toggle-checked {
+    background-color: var(--light-grey-color);
+  }
+
+  ::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    line-height: 30px;
+    min-width: 60px;
+    @media screen and (max-width: 1080px) {
+      min-width: 0;
+      font-size: 12px;
+      padding: 5px;
+      font-weight: 400;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}

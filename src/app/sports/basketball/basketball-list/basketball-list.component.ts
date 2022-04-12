@@ -4,6 +4,7 @@ import { Bet365Service } from '../../../core/services/bet365.service';
 import { Router } from '@angular/router';
 import { GamesService } from '../../games.service';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-basketball-list',
@@ -22,11 +23,12 @@ export class BasketballListComponent implements OnInit, OnDestroy {
     private bet365: Bet365Service,
     private gamesService: GamesService,
     private router: Router,
+    private userService: UserService,
   ) {
+    this.isMobile = this.userService.isMobile();
   }
 
   ngOnInit(): void {
-    this.isMobile = window.innerWidth < 1080;
     this.gamesService.getStatusOfGames().pipe(
       takeUntil(this.unsubscribe$),
       tap((typeOfGames) => {
