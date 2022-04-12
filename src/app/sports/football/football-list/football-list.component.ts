@@ -16,6 +16,7 @@ export class FootballListComponent implements OnInit, OnDestroy {
   loading = true;
   sportID = SportID.Soccer;
   unsubscribe$ = new Subject();
+  isMobile = false;
 
   constructor(
     private bet365: Bet365Service,
@@ -25,6 +26,7 @@ export class FootballListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.isMobile = window.innerWidth < 1080;
     this.gamesService.getStatusOfGames().pipe(
       takeUntil(this.unsubscribe$),
       tap((typeOfGames) => {

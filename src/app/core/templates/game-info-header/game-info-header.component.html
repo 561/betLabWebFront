@@ -1,7 +1,11 @@
 <div class="info-wrapper">
   <div class="up-line">
     <div class="league">
-      <img width="32px" height="24px" src="https://assets.betsapi.com/v2/images/flags/{{game.league.cc}}.svg" alt="">
+      <img
+        src="https://assets.betsapi.com/v2/images/flags/{{game.league.cc}}.svg"
+        alt=""
+        onerror="this.style.display='none'"
+      >
       <p>{{game.league.name}}</p>
     </div>
     <p class="time">

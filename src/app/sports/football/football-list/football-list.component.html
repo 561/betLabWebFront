@@ -16,24 +16,50 @@
             </ng-template>
           </div>
           <div class="league">
-            <img width="20px" height="15px" src="https://assets.betsapi.com/v2/images/flags/{{game.league.cc}}.svg"
-                 alt="">
-            {{game.league.name}}:
+            <img
+              src="https://assets.betsapi.com/v2/images/flags/{{game.league.cc}}.svg"
+              alt=""
+              onerror="this.style.display='none'"
+            >
+            <p>{{game.league.name}}</p>
           </div>
-          <div class="home">
-            {{game.home.name}}
-          </div>
-          <div class="scores">
-            <div *ngIf="this.typeOfGames == 'prematch'; else vs">
-              vs
+          <ng-container *ngIf="isMobile;else desktop">
+            <div class="teams">
+              <p>
+                {{game.home.name}}
+              </p>
+              <p>
+                {{game.away.name}}
+              </p>
             </div>
-            <ng-template #vs>
-              {{game.scores}}
-            </ng-template>
-          </div>
-          <div class="away">
-            {{game.away.name}}
-          </div>
+            <div class="scores">
+              <p *ngIf="this.typeOfGames == 'prematch'; else vs">
+              </p>
+              <ng-template #vs>
+                <p>
+                  {{game.scores}}
+                </p>
+              </ng-template>
+            </div>
+          </ng-container>
+          <ng-template #desktop>
+            <div class="home">
+              {{game.home.name}}
+            </div>
+            <div class="scores">
+              <div *ngIf="this.typeOfGames == 'prematch'; else vs">
+                vs
+              </div>
+              <ng-template #vs>
+                <p>
+                  {{game.scores}}
+                </p>
+              </ng-template>
+            </div>
+            <div class="away">
+              {{game.away.name}}
+            </div>
+          </ng-template>
         </div>
       </mat-list-item>
     </mat-list>

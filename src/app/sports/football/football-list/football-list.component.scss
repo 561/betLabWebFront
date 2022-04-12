@@ -3,8 +3,18 @@ mat-list-item:hover {
   background-color: #ccc;
 }
 
+mat-button-toggle-group, mat-progress-spinner {
+  margin: 10px auto;
+}
+
 .list, .error {
   margin: 10px 20%;
+  @media screen and (max-width: 1400px) {
+    margin: 10px 10%;
+  }
+  @media screen and (max-width: 1080px) {
+    margin: 10px 0;
+  }
 }
 
 .error {
@@ -14,6 +24,9 @@ mat-list-item:hover {
 
 ::ng-deep mat-list-item {
   max-height: 30px;
+  @media screen and (max-width: 1080px) {
+    max-height: 50px;
+  }
 
   &:last-child {
     ::ng-deep .mat-list-item-content {
@@ -23,27 +36,52 @@ mat-list-item:hover {
 
   ::ng-deep .mat-list-item-content {
     max-height: 30px;
+    @media screen and (max-width: 1080px) {
+      max-height: 50px;
+    }
     padding: 0 !important;
     border-bottom: var(--primary-color) 1px solid;
   }
 }
 
 .game {
+  width: 100%;
   display: flex;
   font-size: 10px;
+  padding: 0 2px;
 
   .time, .scores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    width: 55px;
-    padding: 0 10px;
+    width: 8%;
+    @media screen and (max-width: 1080px) {
+      width: 7%;
+    }
   }
 
-  .league {
-    width: 200px;
+  .time {
+    @media screen and (max-width: 1080px) {
+      width: 11%;
+    }
   }
 
-  .home, away {
-    width: 200px;
+  .teams {
+    height: 40px;
+    width: 41%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .home, .away, .league {
+    width: 28%;
+    @media screen and (max-width: 1080px) {
+      width: 41%;
+    }
   }
 
   .home {
@@ -54,9 +92,25 @@ mat-list-item:hover {
     text-align: left;
   }
 
+  .league {
+    display: flex;
+    align-items: center
+  }
+
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  width: 20px;
+  float: left;
+  height: 15px;
 }
 
 mat-spinner {
   margin: 10px auto;
   color: var(--text-color);
 }
+
