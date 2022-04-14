@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Market } from '../../interfaces/bet365';
+import { Market, Odd } from '../../interfaces/bet365';
 
 @Component({
   selector: 'app-table',
@@ -18,11 +18,15 @@ export class TableComponent implements OnInit {
     if (this.market.name.includes('1X2')) {
       this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'world_time'];
     } else {
-      this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'rating', 'world_time'];
+      this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'bot', 'rating', 'world_time'];
     }
   }
 
-  getRatingColor(rating: number): string {
+  getRatingColor(odd: Odd): string {
+    if (odd.game_time && +odd.game_time > 75) {
+      return '200, 200, 200';
+    }
+    const rating = odd.rating?.rating;
     const green = rating > 0 ? 200 : 100;
     const red = rating < 0 ? 200 : 100;
     const ratio = Math.abs(rating / this.signalRating);

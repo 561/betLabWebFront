@@ -115,15 +115,19 @@ export interface Market {
 
 
 export interface Odd {
-  add_time: string;
+  world_time: string;
   id: string;
   row1: string;
   row2: string;
   row3: string;
   ss: string;
-  time_str: string;
-  solved?: number;
-  rating?: number;
+  game_time: string;
+  rating: Rating;
+}
+
+export interface Rating {
+  rating: number;
+  bot: number;
 }
 
 export interface LiveResult {
