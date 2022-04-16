@@ -21,10 +21,16 @@ export class TableComponent implements OnInit {
     if (this.market.name.includes('Total') || this.market.name.includes('Handicap')) {
       this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'rating', 'world_time'];
     }
+    if (typeof this.market.odds[2]?.rating?.rating2 === 'number') {
+      this.displayRows.splice(this.displayRows.length - 1, 0, 'rating2');
+    }
+    if (typeof this.market.odds[2]?.rating?.rating3 === 'number') {
+      this.displayRows.splice(this.displayRows.length - 1, 0, 'rating3');
+    }
   }
 
-  getRatingColor(odd: Odd, row?: number): string {
-    const rating = odd.rating?.rating;
+
+  getRatingColor(rating: number, odd: Odd, row?: number): string {
     const green = rating > 0 ? 200 : 100;
     const red = rating < 0 ? 200 : 100;
     const ratio = Math.abs(rating / this.signalRating);

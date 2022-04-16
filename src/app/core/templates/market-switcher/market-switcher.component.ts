@@ -25,7 +25,6 @@ export class MarketSwitcherComponent implements OnInit {
   }
 
   switchMarket($event: string): void {
-    console.log($event);
     if ($event === 'FT') {
       this.marketChanged.emit(this.markets?.filter(market => !market.name.includes('HT')));
     } else if ($event === 'HT') {

@@ -127,8 +127,10 @@ export interface Odd {
 }
 
 export interface Rating {
-  rating: number;
   bot: number;
+  rating: number;
+  rating2?: number;
+  rating3?: number;
 }
 
 export interface LiveResult {
