@@ -107,6 +107,7 @@ export interface GamesListItem {
 }
 
 export interface Market {
+  'rowsNames': string[];
   'name': string;
   'odds': Odd[];
   'firstLine'?: Odd;
