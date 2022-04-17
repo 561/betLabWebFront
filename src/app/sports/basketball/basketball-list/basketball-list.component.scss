@@ -44,6 +44,17 @@ mat-button-toggle-group, mat-progress-spinner {
   }
 }
 
+mat-paginator {
+  margin-top: -52px;
+  @media screen and (max-width: 1080px) {
+    margin-top: 0;
+  }
+
+  ::ng-deep .mat-paginator-page-size {
+    display: none;
+  }
+}
+
 .game {
   width: 100%;
   display: flex;

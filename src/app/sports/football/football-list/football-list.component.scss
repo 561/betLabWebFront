@@ -7,8 +7,20 @@ mat-button-toggle-group, mat-progress-spinner {
   margin: 10px auto;
 }
 
+mat-paginator {
+  margin-top: -52px;
+  @media screen and (max-width: 1080px) {
+    margin-top: 0;
+  }
+
+  ::ng-deep .mat-paginator-page-size {
+    display: none;
+  }
+}
+
 .list, .error {
-  margin: 10px 20%;
+  margin: 0 20%;
+  padding-bottom: 20px;
   @media screen and (max-width: 1400px) {
     margin: 10px 10%;
   }

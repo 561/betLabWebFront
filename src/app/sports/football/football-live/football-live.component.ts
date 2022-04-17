@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Bet365Service } from '../../../core/services/bet365.service';
-import { Game, Market } from '../../../core/interfaces/bet365';
+import { Game, Market, SportID } from '../../../core/interfaces/bet365';
 import { UserService } from '../../../core/services/user.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class FootballLiveComponent implements OnInit {
   game: Game;
   loading = true;
   isMobile = false;
+  sportID = SportID.Soccer;
   markets: Market[] = [];
 
   constructor(

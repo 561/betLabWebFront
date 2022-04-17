@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { GamesService } from '../../games.service';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { UserService } from '../../../core/services/user.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-football-list',
@@ -13,6 +14,8 @@ import { UserService } from '../../../core/services/user.service';
 })
 export class FootballListComponent implements OnInit, OnDestroy {
   games: GamesListItem[];
+  countOfGames: number;
+  perPage: number;
   typeOfGames: string;
   loading = true;
   sportID = SportID.Soccer;
@@ -36,12 +39,14 @@ export class FootballListComponent implements OnInit, OnDestroy {
         this.loading = true;
       }),
       switchMap(typeOfGames => {
-        return this.gamesService.getListOfGames(typeOfGames, this.sportID);
+        return this.gamesService.getListOfGames(typeOfGames, this.sportID, 1, 100);
       }),
-    ).subscribe((games) => {
+    ).subscribe((response) => {
         this.loading = false;
-        if (Array.isArray(games)) {
-          this.games = games;
+        if (Array.isArray(response.results)) {
+          this.games = response.results;
+          this.countOfGames = response.pager.total;
+          this.perPage = response.pager.per_page;
         }
       }, (error) => {
         console.log(error);
@@ -51,6 +56,22 @@ export class FootballListComponent implements OnInit, OnDestroy {
 
   openGame(id: string): void {
     this.router.navigate(['/dashboard', 'football', 'game', id]);
+  }
+
+  nextPage(event: PageEvent): void {
+    this.loading = true;
+    this.gamesService.getListOfGames(
+      this.typeOfGames,
+      this.sportID,
+      event.pageIndex,
+      event.pageSize,
+    ).subscribe((response) => {
+      if (Array.isArray(response.results)) {
+        this.games = response.results;
+        this.countOfGames = response.pager.total;
+      }
+      this.loading = false;
+    });
   }
 
   ngOnDestroy(): void {

@@ -106,6 +106,18 @@ export interface GamesListItem {
   time_status: string;
 }
 
+export interface GamesList {
+  results: GamesListItem[];
+  success: string;
+  pager: Pager;
+}
+
+export interface Pager {
+  page: number;
+  per_page: number;
+  total: number;
+}
+
 export interface Market {
   'rowsNames': string[];
   'name': string;

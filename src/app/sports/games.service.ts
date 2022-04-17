@@ -1,6 +1,6 @@
 import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { GamesListItem } from '../core/interfaces/bet365';
+import { GamesList } from '../core/interfaces/bet365';
 import { Bet365Service } from '../core/services/bet365.service';
 
 
@@ -23,17 +23,17 @@ export class GamesService {
     this.statusOfGames$.next(status);
   }
 
-  private getFetchForListOfGames(typeOfGames: string, sportID: number): Observable<GamesListItem[]> {
+  private getFetchForListOfGames(typeOfGames: string, sportID: number, page: number, pageSize: number): Observable<GamesList> {
     if (typeOfGames === 'live') {
-      return this.bet365.live_games(sportID);
+      return this.bet365.live_games(sportID, page, pageSize);
     }
     if (typeOfGames === 'prematch') {
-      return this.bet365.prematch_games(sportID);
+      return this.bet365.prematch_games(sportID, page, pageSize);
     }
-    return this.bet365.finished_games(sportID);
+    return this.bet365.finished_games(sportID, page, pageSize);
   }
 
-  getListOfGames(typeOfGames: string, sportID: number): Observable<GamesListItem[]> {
-    return this.getFetchForListOfGames(typeOfGames, sportID);
+  getListOfGames(typeOfGames: string, sportID: number, page: number, pageSize: number): Observable<GamesList> {
+    return this.getFetchForListOfGames(typeOfGames, sportID, page, pageSize);
   }
 }

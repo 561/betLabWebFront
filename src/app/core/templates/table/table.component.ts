@@ -7,6 +7,7 @@ import { Market, Odd } from '../../interfaces/bet365';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
+  @Input() sport: string;
   @Input() market: Market;
   @Input() signalRating: number;
   displayRows: string[];
@@ -21,10 +22,8 @@ export class TableComponent implements OnInit {
     if (this.market.name.includes('Total') || this.market.name.includes('Handicap')) {
       this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'rating', 'world_time'];
     }
-    if (typeof this.market.odds[2]?.rating?.rating2 === 'number') {
+    if (this.sport === 'basketball' && this.market.name.includes('Handicap')) {
       this.displayRows.splice(this.displayRows.length - 1, 0, 'rating2');
-    }
-    if (typeof this.market.odds[2]?.rating?.rating3 === 'number') {
       this.displayRows.splice(this.displayRows.length - 1, 0, 'rating3');
     }
   }
@@ -50,7 +49,10 @@ export class TableComponent implements OnInit {
   }
 
   getProgruz(row: number, odd: Odd, opacity: number): string {
-    const rating = odd.rating?.rating || 0;
+    let rating = odd.rating?.rating || 0;
+    if (this.sport === 'football' && this.market.name.includes('Handicap')) {
+      rating = -rating;
+    }
     if (odd.game_time && +odd.game_time > 75) {
       return `255, 255, 180, 0`;
     }

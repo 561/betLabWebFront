@@ -8,6 +8,6 @@
     [markets]="game.markets || []"
   ></app-market-switcher>
   <div class="tables">
-    <app-table *ngFor="let market of markets" [market]="market" [signalRating]="0.6"></app-table>
+    <app-table *ngFor="let market of markets" [sport]="'football'" [market]="market" [signalRating]="0.6"></app-table>
   </div>
 </ng-container>
