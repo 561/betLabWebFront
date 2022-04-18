@@ -49,20 +49,17 @@ export class TableComponent implements OnInit {
   }
 
   getProgruz(row: number, odd: Odd, opacity: number): string {
-    let rating = odd.rating?.rating || 0;
-    if (this.sport === 'football' && this.market.name.includes('Handicap')) {
-      rating = -rating;
-    }
+    const rating = odd.rating?.rating || 0;
     if (odd.game_time && +odd.game_time > 75) {
       return `255, 255, 180, 0`;
     }
-    if (row === 1 && rating > 0) {
+    if (row === 1 && rating < 0) {
       return `255, 255, 180, ${opacity}`;
     }
     if (row === 2) {
       return `255, 255, 180, ${opacity}`;
     }
-    if (row === 3 && rating < 0) {
+    if (row === 3 && rating > 0) {
       return `255, 255, 180, ${opacity}`;
     }
     return `255, 255, 180, 0`;
