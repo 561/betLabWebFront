@@ -24,7 +24,6 @@ export class TableComponent implements OnInit {
     }
     if (this.sport === 'basketball' && this.market.name.includes('Handicap')) {
       this.displayRows.splice(this.displayRows.length - 1, 0, 'rating2');
-      this.displayRows.splice(this.displayRows.length - 1, 0, 'rating3');
     }
   }
 
