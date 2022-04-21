@@ -12,6 +12,8 @@ const routes: Routes = [
   { path: 'basketball', component: BasketballListComponent },
   { path: 'football/:status', component: FootballListComponent },
   { path: 'basketball/:status', component: BasketballListComponent },
+  { path: 'football/league/:id', component: FootballListComponent },
+  { path: 'basketball/league/:id', component: BasketballListComponent },
   { path: '', component: FootballListComponent },
 ];
 

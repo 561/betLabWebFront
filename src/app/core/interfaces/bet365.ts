@@ -66,12 +66,6 @@ export interface Extra {
   };
 }
 
-export interface LiveGames {
-  succes: number;
-  results: LiveResult[];
-  pager: Pager;
-}
-
 export interface Game {
   'league': Country;
   'time': Time;
@@ -124,44 +118,18 @@ export interface Market {
   'odds': Odd[];
   'firstLine'?: Odd;
   'firstPrematch'?: Odd;
+  'isHomeFavoriteLive'?: boolean;
+  'isHomeFavoritePrematch'?: boolean;
 }
 
 
 export interface Odd {
   world_time: string;
-  id: string;
-  row1: string;
-  row2: string;
-  row3: string;
-  ss: string;
-  game_time: string;
-  rating: Rating;
+  id: number;
+  row1: number;
+  row2: number;
+  row3: number;
+  ss: number[];
+  game_time: number;
+  rating: number[];
 }
-
-export interface Rating {
-  bot: number;
-  rating: number;
-  rating2?: number;
-  rating3?: number;
-}
-
-export interface LiveResult {
-  away: TeamLeague;
-  bet365_id: string;
-  extra: Extra;
-  home: TeamLeague;
-  id: string;
-  league: TeamLeague;
-  scores: {
-    2: {
-      home: string;
-      away: string;
-    };
-  };
-  sport_id: string;
-  ss: string;
-  time: string;
-  time_status: string;
-  timer: Timer;
-}
-

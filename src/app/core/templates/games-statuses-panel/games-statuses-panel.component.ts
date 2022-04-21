@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Bet365Service } from '../../services/bet365.service';
 import { Subject } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GamesService } from '../../../sports/games.service';
 
 @Component({
@@ -10,7 +10,9 @@ import { GamesService } from '../../../sports/games.service';
   styleUrls: ['./games-statuses-panel.component.scss'],
 })
 export class GamesStatusesPanelComponent implements OnInit, OnDestroy {
+  queryParams: Params;
   typeToggle: string;
+  searchData: string;
   @Input() sport: string;
   destroy$ = new Subject<void>();
 
@@ -21,10 +23,18 @@ export class GamesStatusesPanelComponent implements OnInit, OnDestroy {
     private router: Router,
   ) {
     this.typeToggle = this.activatedRoute.snapshot.paramMap.get('status') || 'live';
+    activatedRoute.queryParams.subscribe(
+      (queryParam: Params) => {
+        this.queryParams = queryParam;
+      },
+    );
   }
 
   goToItem(status: string): void {
-    this.router.navigate(['/dashboard', this.sport, status], { relativeTo: this.activatedRoute });
+    this.router.navigate(['/dashboard', this.sport, status], {
+      relativeTo: this.activatedRoute,
+      queryParams: this.queryParams,
+    });
     this.changeValue(status);
   }
 

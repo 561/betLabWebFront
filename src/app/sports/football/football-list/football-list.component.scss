@@ -7,10 +7,25 @@ mat-button-toggle-group, mat-progress-spinner {
   margin: 10px auto;
 }
 
-mat-paginator {
+.search-items {
+  display: flex;
+  justify-content: space-between;
   margin-top: -52px;
+
+  mat-paginator {
+    margin-left: auto;
+  }
+
   @media screen and (max-width: 1080px) {
     margin-top: 0;
+    app-search-item {
+      margin: auto 0;
+      max-width: 50%;
+    }
+    mat-paginator {
+      min-width: 50%;
+      margin-left: auto;
+    }
   }
 
   ::ng-deep .mat-paginator-page-size {

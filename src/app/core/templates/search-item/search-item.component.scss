@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  padding-left: 15px;
+  margin: auto 0;
+  background: #ddddff;
+  border-radius: 16px;
+  height: 30px;
+
+  p {
+    overflow: hidden;
+    font-size: 14px;
+    margin: auto;
+  }
+
+  button {
+    transform: scale(0.5);
+    margin: auto 0;
+  }
+}

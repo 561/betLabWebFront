@@ -16,6 +16,10 @@ import { GamesStatusesPanelComponent } from '../core/templates/games-statuses-pa
 import { GameInfoHeaderComponent } from '../core/templates/game-info-header/game-info-header.component';
 import { MarketSwitcherComponent } from '../core/templates/market-switcher/market-switcher.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { SearchItemComponent } from '../core/templates/search-item/search-item.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,18 +31,22 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     GameInfoHeaderComponent,
     GamesStatusesPanelComponent,
     MarketSwitcherComponent,
+    SearchItemComponent,
   ],
-    imports: [
-        CommonModule,
-        SportsRoutngModule,
-        RouterModule,
-        MatListModule,
-        MatTableModule,
-        MatProgressSpinnerModule,
-        MatProgressBarModule,
-        MatButtonToggleModule,
-        MatPaginatorModule,
-    ],
+  imports: [
+    CommonModule,
+    SportsRoutngModule,
+    RouterModule,
+    MatListModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatButtonToggleModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   exports: [
     RouterModule,
   ],

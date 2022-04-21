@@ -4,6 +4,17 @@
 
 .info-wrapper {
 
+  a {
+    align-self: center;
+  }
+
+  .disabled {
+    pointer-events: none;
+    cursor: default;
+    color: black;
+    text-decoration: unset;
+  }
+
   .time {
     font-size: 20px;
 

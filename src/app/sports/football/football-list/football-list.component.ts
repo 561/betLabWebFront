@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Bet365Service } from '../../../core/services/bet365.service';
-import { GamesListItem, SportID } from '../../../core/interfaces/bet365';
-import { Router } from '@angular/router';
+import { GamesList, GamesListItem, SportID } from '../../../core/interfaces/bet365';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GamesService } from '../../games.service';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { UserService } from '../../../core/services/user.service';
@@ -17,6 +17,8 @@ export class FootballListComponent implements OnInit, OnDestroy {
   countOfGames: number;
   perPage: number;
   typeOfGames: string;
+  searchItem: string;
+  queryParams: Params;
   loading = true;
   sportID = SportID.Soccer;
   unsubscribe$ = new Subject();
@@ -27,11 +29,18 @@ export class FootballListComponent implements OnInit, OnDestroy {
     private gamesService: GamesService,
     private router: Router,
     private userService: UserService,
+    private activatedRoute: ActivatedRoute,
   ) {
     this.isMobile = this.userService.isMobile();
+    activatedRoute.queryParams.subscribe(
+      (queryParam: Params) => {
+        this.queryParams = queryParam;
+      },
+    );
   }
 
   ngOnInit(): void {
+    this.clearSearchSubscribe();
     this.gamesService.getStatusOfGames().pipe(
       takeUntil(this.unsubscribe$),
       tap((typeOfGames) => {
@@ -39,15 +48,10 @@ export class FootballListComponent implements OnInit, OnDestroy {
         this.loading = true;
       }),
       switchMap(typeOfGames => {
-        return this.gamesService.getListOfGames(typeOfGames, this.sportID, 1, 100);
+        return this.gamesService.getListOfGames(typeOfGames, this.sportID, 1, 100, this.queryParams);
       }),
     ).subscribe((response) => {
-        this.loading = false;
-        if (Array.isArray(response.results)) {
-          this.games = response.results;
-          this.countOfGames = response.pager.total;
-          this.perPage = response.pager.per_page;
-        }
+        this.updateData(response);
       }, (error) => {
         console.log(error);
       },
@@ -65,17 +69,41 @@ export class FootballListComponent implements OnInit, OnDestroy {
       this.sportID,
       event.pageIndex,
       event.pageSize,
+      this.queryParams,
     ).subscribe((response) => {
-      if (Array.isArray(response.results)) {
-        this.games = response.results;
-        this.countOfGames = response.pager.total;
-      }
-      this.loading = false;
+      this.updateData(response);
     });
   }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next(true);
     this.unsubscribe$.complete();
+  }
+
+  private clearSearchSubscribe(): void {
+    this.gamesService.getClearSearch().pipe(
+      takeUntil(this.unsubscribe$),
+      tap(() => this.queryParams = {}),
+      switchMap(typeOfGames => {
+        return this.gamesService.getListOfGames(this.typeOfGames, this.sportID, 1, 100);
+      }),
+    ).subscribe((response) => {
+      this.updateData(response);
+    });
+  }
+
+  private updateData(response: GamesList): void {
+    if (Object.keys(this.queryParams).includes('league_id')) {
+      this.searchItem = '123';
+    }
+    if (Object.keys(this.queryParams).includes('league_id')) {
+      this.searchItem = '456';
+    }
+    if (Array.isArray(response.results)) {
+      this.games = response.results;
+      this.countOfGames = response.pager.total;
+      this.perPage = response.pager.per_page;
+    }
+    this.loading = false;
   }
 }

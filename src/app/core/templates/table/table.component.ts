@@ -16,13 +16,11 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'rating', 'world_time'];
     if (this.market.name.includes('1X2')) {
-      this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'world_time'];
+      this.displayRows.splice(5, 1);
     }
-    if (this.market.name.includes('Total') || this.market.name.includes('Handicap')) {
-      this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'rating', 'world_time'];
-    }
-    if (this.sport === 'basketball' && this.market.name.includes('Handicap')) {
+    if (this.sport === 'basketball' && !this.market.name.includes('1X2')) {
       this.displayRows.splice(this.displayRows.length - 1, 0, 'rating2');
     }
   }
@@ -48,7 +46,13 @@ export class TableComponent implements OnInit {
   }
 
   getProgruz(row: number, odd: Odd, opacity: number): string {
-    const rating = odd.rating?.rating || 0;
+    let rating = odd.rating[0] || 0;
+    if (!this.market.isHomeFavoritePrematch && (!this.market.firstLine || odd.world_time <= this.market.firstLine?.world_time)) {
+      rating = -rating;
+    }
+    if (!this.market.isHomeFavoriteLive && this.market.firstLine && (odd.world_time > this.market.firstLine?.world_time)) {
+      rating = -rating;
+    }
     if (odd.game_time && +odd.game_time > 75) {
       return `255, 255, 180, 0`;
     }

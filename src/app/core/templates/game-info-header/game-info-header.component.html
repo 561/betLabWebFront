@@ -6,7 +6,11 @@
         alt=""
         onerror="this.style.display='none'"
       >
-      <p>{{game.league.name}}</p>
+      <a
+        class="disabled"
+        [routerLink]="'/dashboard/football/'"
+        [queryParams]="{'league_id':game.league.id}"
+      >{{game.league.name}}</a>
     </div>
     <p class="time">
       <ng-container *ngIf="this.game.status === '1'; else gameTime">
@@ -23,8 +27,16 @@
     </p>
   </div>
   <div class="teams-wrapper">
-    <div class="team1">{{game.team1.name}}</div>
+    <a
+      class="team1 disabled"
+      [routerLink]="'/dashboard/football/'"
+      [queryParams]="{'team_id':game.team1.id}"
+    >{{game.team1.name}}</a>
     <div class="score">{{game.score}}</div>
-    <div class="team2">{{game.team2.name}}</div>
+    <a
+      class="team2 disabled"
+      [routerLink]="'/dashboard/football/'"
+      [queryParams]="{'team_id':game.team2.id}"
+    >{{game.team1.name}}</a>
   </div>
 </div>

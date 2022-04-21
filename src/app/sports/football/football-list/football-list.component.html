@@ -1,13 +1,16 @@
 <app-games-statuses-panel
   [sport]="'football'"
 ></app-games-statuses-panel>
-<mat-paginator
-  aria-label="Select page"
-  [length]="countOfGames"
-  [pageSize]="perPage"
-  (page)="nextPage($event)"
->
-</mat-paginator>
+<div class="search-items">
+  <app-search-item *ngIf="searchItem" [searchItem]="searchItem"></app-search-item>
+  <mat-paginator
+    aria-label="Select page"
+    [length]="countOfGames"
+    [pageSize]="perPage"
+    (page)="nextPage($event)"
+  >
+  </mat-paginator>
+</div>
 <ng-container *ngIf="!loading; else loadingTemp">
   <ng-container *ngIf="games">
     <div *ngIf="games.length === 0" class="error">no games now</div>
