@@ -30,7 +30,7 @@
         *matCellDef="let element"
         mat-cell
         [ngStyle]="{ 'background-color': ' rgba(' + getRatingColor(element.rating[0], element, 2) + ')'}"
-      > {{element.row2 || '-'}} </td>
+      > {{element.row2 !== null ? element.row2 : '-'}} </td>
     </ng-container>
     <ng-container matColumnDef="row3">
       <th mat-header-cell *matHeaderCellDef>{{market.rowsNames[2]}}</th>
@@ -49,6 +49,11 @@
       <th mat-header-cell *matHeaderCellDef>Deviation2</th>
       <td mat-cell [ngStyle]="{ 'background-color': ' rgba(' + getRatingColor(element.rating[1], element) + ')'}"
           *matCellDef="let element"> {{element.rating[1] | number : '1.2-2'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rating3">
+      <th mat-header-cell *matHeaderCellDef>Deviation3</th>
+      <td mat-cell [ngStyle]="{ 'background-color': ' rgba(' + getRatingColor(element.rating[2], element) + ')'}"
+          *matCellDef="let element"> {{element.rating[2] | number : '1.2-2'}} </td>
     </ng-container>
     <ng-container matColumnDef="world_time">
       <th mat-header-cell *matHeaderCellDef>Time</th>
