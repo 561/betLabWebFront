@@ -16,12 +16,11 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'rating', 'world_time'];
+    this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'rating', 'rating2', 'world_time'];
     if (this.market.name.includes('1X2')) {
-      this.displayRows.splice(5, 1);
+      this.displayRows.splice(5, 2);
     }
     if (this.sport === 'basketball' && !this.market.name.includes('1X2')) {
-      this.displayRows.splice(this.displayRows.length - 1, 0, 'rating2');
       this.displayRows.splice(this.displayRows.length - 1, 0, 'rating3');
     }
   }
