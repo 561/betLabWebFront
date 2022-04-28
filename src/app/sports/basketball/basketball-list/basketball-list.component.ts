@@ -63,7 +63,7 @@ export class BasketballListComponent implements OnInit, OnDestroy {
     this.gamesService.getListOfGames(
       this.typeOfGames,
       this.sportID,
-      event.pageIndex,
+      event.pageIndex + 1,
       event.pageSize,
     ).subscribe((response) => {
       if (Array.isArray(response.results)) {

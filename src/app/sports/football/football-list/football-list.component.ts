@@ -67,7 +67,7 @@ export class FootballListComponent implements OnInit, OnDestroy {
     this.gamesService.getListOfGames(
       this.typeOfGames,
       this.sportID,
-      event.pageIndex,
+      event.pageIndex + 1,
       event.pageSize,
       this.queryParams,
     ).subscribe((response) => {
