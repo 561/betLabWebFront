@@ -13,7 +13,7 @@
 </div>
 <ng-container *ngIf="!loading; else loadingTemp">
   <ng-container *ngIf="games">
-    <div *ngIf="games.length === 0" class="error">no games now</div>
+    <div *ngIf="games.length === 0" class="error">no games</div>
     <mat-list class="list">
       <mat-list-item *ngFor="let game of games" (click)="openGame(game.id)">
         <div class="game">
