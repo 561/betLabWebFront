@@ -63,8 +63,8 @@ export class FootballLiveComponent implements OnInit {
       this.lastMarkets.delete(oddsDictionary[this.sportID][this.gamesService.getCurrentMarket()]);
       return oddsDictionary[this.sportID][currentMarket].toString();
     }
-    this.lastMarkets = new Set(currentMarket.includes('HT') ? [1, 2, 3] : [5, 6, 8]);
-    return currentMarket.includes('HT') ? '5,6,8' : '1,2,3';
+    this.lastMarkets = new Set(currentMarket.includes('HT') ? [1, 2, 3] : [8, 5, 6]);
+    return currentMarket.includes('HT') ? '8,5,6' : '1,2,3';
   }
 
   onChangeMarket($event: Market[]): void {

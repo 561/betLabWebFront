@@ -33,9 +33,11 @@ export class MarketSwitcherComponent implements OnInit {
 
   switchMarket($event: string): void {
     if ($event === 'FT') {
-      this.marketChanged.emit(this.markets?.filter(market => !market.name.includes('HT')));
+      const markets = this.markets?.filter(market => !market.name.includes('HT')).sort((a, b) => a.name > b.name ? 1 : -1);
+      this.marketChanged.emit(markets);
     } else if ($event === 'HT') {
-      this.marketChanged.emit(this.markets?.filter(market => market.name.includes('HT')));
+      const markets = this.markets?.filter(market => market.name.includes('HT')).sort((a, b) => a.name > b.name ? 1 : -1);
+      this.marketChanged.emit(markets);
     } else {
       this.marketChanged.emit(this.markets?.filter(market => market.name === $event));
     }
