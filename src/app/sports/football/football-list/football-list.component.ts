@@ -20,7 +20,7 @@ export class FootballListComponent implements OnInit, OnDestroy {
   searchItem: string;
   queryParams: Params;
   loading = true;
-  sportID = SportID.Soccer;
+  sportID = SportID.Football;
   unsubscribe$ = new Subject();
   isMobile = false;
 

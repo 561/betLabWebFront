@@ -4,8 +4,9 @@
 <ng-container *ngIf="!loading; else showLoading">
   <app-game-info-header [game]="game" [sport]="'football'"></app-game-info-header>
   <app-market-switcher
-    (marketChanged)="onChangeMarket($event)"
+    [disabled]="loadingLastMarkets"
     [markets]="game.markets || []"
+    (marketChanged)="onChangeMarket($event)"
   ></app-market-switcher>
   <div class="tables">
     <app-table *ngFor="let market of markets" [sport]="'football'" [market]="market" [signalRating]="0.6"></app-table>

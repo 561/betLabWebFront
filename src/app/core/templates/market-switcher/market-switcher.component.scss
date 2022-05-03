@@ -18,6 +18,11 @@ mat-button-toggle-group {
   }
 }
 
+.disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;

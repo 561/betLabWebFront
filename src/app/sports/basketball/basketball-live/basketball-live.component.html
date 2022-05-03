@@ -5,6 +5,7 @@
   <app-game-info-header [game]="game" [sport]="'basketball'"></app-game-info-header>
   <app-market-switcher
     (marketChanged)="onChangeMarket($event)"
+    [disabled]="loadingLastMarkets"
     [markets]="game.markets || []"
   ></app-market-switcher>
   <div class="tables">

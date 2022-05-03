@@ -11,6 +11,7 @@ import { Params } from '@angular/router';
 export class GamesService {
   statusOfGames$: Subject<string> = new Subject<string>();
   clearSearch$: Subject<void> = new Subject<void>();
+  currentMarket: string;
 
   constructor(
     private bet365: Bet365Service,
@@ -27,6 +28,14 @@ export class GamesService {
 
   setStatusOfGames(status: string): void {
     this.statusOfGames$.next(status);
+  }
+
+  getCurrentMarket(): string {
+    return this.currentMarket || 'Handicap';
+  }
+
+  setCurrentMarket(market: string): void {
+    this.currentMarket = market;
   }
 
   clearSearch(): void {

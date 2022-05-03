@@ -1,5 +1,5 @@
 export enum SportID {
-  Soccer = 1,
+  Football = 1,
   Basketball = 18,
   Tennis = 13,
   Volleyball = 91,
@@ -26,6 +26,31 @@ export enum SportID {
   WaterPolo = 110,
   Squash = 107,
   Esports = 151,
+}
+
+export const oddsDictionary: OddsDictionaryInterface = {
+  [SportID.Football]: {
+    '1X2' : 1,
+    Handicap : 2,
+    Total : 3,
+    HT_Handicap : 5,
+    HT_Total : 6,
+    HT_1X2: 8,
+  },
+  [SportID.Basketball]: {
+    '1X2': 1,
+    Handicap: 2,
+    Total: 3,
+    HT_1X2: 4,
+    HT_Handicap: 5,
+    HT_Total: 6,
+  },
+};
+
+export interface OddsDictionaryInterface {
+  [key: number]: {
+    [key: string]: number;
+  };
 }
 
 export interface Pager {

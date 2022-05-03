@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Market } from '../../interfaces/bet365';
 import { UserService } from '../../services/user.service';
+import { GamesService } from '../../../sports/games.service';
 
 @Component({
   selector: 'app-market-switcher',
@@ -9,18 +10,24 @@ import { UserService } from '../../services/user.service';
 })
 export class MarketSwitcherComponent implements OnInit {
   @Input() markets: Market[] = [];
+  @Input() disabled: boolean;
   @Output() marketChanged = new EventEmitter();
   isMobile = false;
   marketToggle: string;
 
   constructor(
     private userService: UserService,
+    private gamesService: GamesService,
   ) {
     this.isMobile = this.userService.isMobile();
   }
 
   ngOnInit(): void {
-    this.marketToggle = this.isMobile ? '1X2' : 'FT';
+    if (this.isMobile) {
+      this.marketToggle = this.gamesService.getCurrentMarket().replace('_', ' ');
+    } else {
+      this.marketToggle = this.gamesService.getCurrentMarket().includes('HT') ? 'HT' : 'FT';
+    }
     this.switchMarket(this.marketToggle);
   }
 

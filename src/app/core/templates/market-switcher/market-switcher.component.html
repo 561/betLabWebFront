@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" [ngClass]="{'disabled':disabled}">
   <mat-button-toggle-group
     (change)="switchMarket($event.value)"
     #group="matButtonToggleGroup"
