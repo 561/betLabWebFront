@@ -39,8 +39,11 @@ export class TableComponent implements OnInit {
     if (row) {
       return this.getProgruz(row, odd, opacity);
     }
-    if (odd.game_time && +odd.game_time > 75) {
-      return '200, 200, 200';
+    if (this.market.name.includes('Handicap') && odd.row2 === 0 && odd.row1 && Math.abs(odd.row1 - 1.9) > 0.2) {
+      return `210, 210, 210`;
+    }
+    if (this.market.name.includes('Total') && odd.row2 - odd.ss[0] - odd.ss[1] === 0.5 && odd.row1 && Math.abs(odd.row1 - 1.9) > 0.2) {
+      return `210, 210, 210`;
     }
     return `${red}, ${green}, 100, ${opacity}`;
   }
@@ -53,7 +56,10 @@ export class TableComponent implements OnInit {
     if (!this.market.isHomeFavoriteLive && this.market.firstLine && (odd.world_time > this.market.firstLine?.world_time)) {
       rating = -rating;
     }
-    if (odd.game_time && +odd.game_time > 75) {
+    if (this.market.name.includes('Handicap') && odd.row2 === 0 && Math.abs(odd.row1 - 1.9) > 0.2) {
+      return `255, 255, 180, 0`;
+    }
+    if (this.market.name.includes('Total') && odd.row2 - odd.ss[0] - odd.ss[1] === 0.5 && Math.abs(odd.row1 - 1.9) > 0.2) {
       return `255, 255, 180, 0`;
     }
     if (row === 1 && rating < 0) {
