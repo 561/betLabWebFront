@@ -1,5 +1,5 @@
 
-mat-list-item:hover {
+a:hover {
   background-color: #ccc;
 }
 
@@ -49,7 +49,7 @@ mat-button-toggle-group, mat-progress-spinner {
   text-align: center;
 }
 
-::ng-deep mat-list-item {
+::ng-deep a {
   max-height: 30px;
   @media screen and (max-width: 1080px) {
     max-height: 50px;

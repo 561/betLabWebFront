@@ -54,10 +54,6 @@ export class BasketballListComponent implements OnInit, OnDestroy {
     );
   }
 
-  openGame(id: string): void {
-    this.router.navigate(['/dashboard', 'basketball', 'game', id]);
-  }
-
   nextPage(event: PageEvent): void {
     this.loading = true;
     this.gamesService.getListOfGames(

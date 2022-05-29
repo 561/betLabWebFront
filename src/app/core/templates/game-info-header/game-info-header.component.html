@@ -7,7 +7,7 @@
         onerror="this.style.display='none'"
       >
       <a
-        class="disabled"
+        [appNoLink]="true"
         [routerLink]="'/dashboard/football/'"
         [queryParams]="{'league_id':game.league.id}"
       >{{game.league.name}}</a>
@@ -28,13 +28,15 @@
   </div>
   <div class="teams-wrapper">
     <a
-      class="team1 disabled"
+      class="team1"
+      [appNoLink]="true"
       [routerLink]="'/dashboard/football/'"
       [queryParams]="{'team_id':game.team1.id}"
     >{{game.team1.name}}</a>
     <div class="score">{{game.score}}</div>
     <a
-      class="team2 disabled"
+      class="team2"
+      [appNoLink]="true"
       [routerLink]="'/dashboard/football/'"
       [queryParams]="{'team_id':game.team2.id}"
     >{{game.team2.name}}</a>

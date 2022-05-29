@@ -58,10 +58,6 @@ export class FootballListComponent implements OnInit, OnDestroy {
     );
   }
 
-  openGame(id: string): void {
-    this.router.navigate(['/dashboard', 'football', 'game', id]);
-  }
-
   nextPage(event: PageEvent): void {
     this.loading = true;
     this.gamesService.getListOfGames(

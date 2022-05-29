@@ -15,7 +15,12 @@
   <ng-container *ngIf="games">
     <div *ngIf="games.length === 0" class="error">no games</div>
     <mat-list class="list">
-      <mat-list-item *ngFor="let game of games" (click)="openGame(game.id)">
+      <a
+        *ngFor="let game of games"
+        mat-list-item
+        [routerLink]="['game/' + game.id]"
+        [appNoLink]="false"
+      >
         <div class="game">
           <div class="time">
             <div *ngIf="this.typeOfGames == 'live'; else gameTime">
@@ -71,7 +76,7 @@
             </div>
           </ng-template>
         </div>
-      </mat-list-item>
+      </a>
     </mat-list>
   </ng-container>
 </ng-container>

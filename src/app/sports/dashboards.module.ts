@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchItemComponent } from '../core/templates/search-item/search-item.component';
 import { MatButtonModule } from '@angular/material/button';
+import { NoLinkDirective } from '../core/directives/no-link.directive';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatButtonModule } from '@angular/material/button';
     GamesStatusesPanelComponent,
     MarketSwitcherComponent,
     SearchItemComponent,
+    NoLinkDirective,
   ],
   imports: [
     CommonModule,
