@@ -20,9 +20,6 @@ export class TableComponent implements OnInit {
     if (this.market.name.includes('1X2')) {
       this.displayRows.splice(5, 2);
     }
-    if (this.sport === 'basketball' && !this.market.name.includes('1X2')) {
-      this.displayRows.splice(this.displayRows.length - 1, 0, 'rating3');
-    }
   }
 
 
