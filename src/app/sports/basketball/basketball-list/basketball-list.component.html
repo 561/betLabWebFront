@@ -15,7 +15,7 @@
       <a
         *ngFor="let game of games"
         mat-list-item
-        [routerLink]="['game/' + game.id]"
+        [routerLink]="['/dashboard/basketball/game/' + game.id]"
         [appNoLink]="false"
       >
         <div class="game">
