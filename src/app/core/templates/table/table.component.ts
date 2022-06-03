@@ -11,12 +11,15 @@ export class TableComponent implements OnInit {
   @Input() market: Market;
   @Input() signalRating: number;
   displayRows: string[];
+  rating2Green = new Set();
+  rating2Red = new Set();
 
   constructor() {
   }
 
   ngOnInit(): void {
     this.displayRows = ['game_time', 'ss', 'row1', 'row2', 'row3', 'rating', 'rating2', 'world_time'];
+    this.getRating2rows(this.market);
     if (this.market.name.includes('1X2')) {
       this.displayRows.splice(5, 2);
     }
@@ -43,6 +46,27 @@ export class TableComponent implements OnInit {
       return `210, 210, 210`;
     }
     return `${red}, ${green}, 100, ${opacity}`;
+  }
+
+  getRating2rows(market: Market): void {
+    let search = false;
+    let rating1 = 0;
+    let rating2 = 0;
+    let startIndex = 0;
+    market.odds.forEach((item, index) => {
+      if (search && rating1 - item.rating[0] === rating2) {
+        search = false;
+        for (let i = startIndex; i <= index; i++) {
+          rating2 > 0 ? this.rating2Green.add(i) : this.rating2Red.add(i);
+        }
+      }
+      if (item.rating[1]) {
+        search = true;
+        rating1 = item.rating[0];
+        rating2 = item.rating[1];
+        startIndex = index;
+      }
+    });
   }
 
   getProgruz(row: number, odd: Odd, opacity: number): string {
