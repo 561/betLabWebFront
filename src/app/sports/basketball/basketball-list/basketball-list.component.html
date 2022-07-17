@@ -21,7 +21,9 @@
         <div class="game">
           <div class="time">
             <div *ngIf="this.typeOfGames == 'live'; else gameTime">
-              {{game.time.q}} - {{game.time.tm | number:'2.0-0'}}:{{game.time.ts | number:'2.0-0'}}
+              <span *ngIf="game.time">
+                {{game.time?.q}} - {{game.time?.tm | number:'2.0-0'}}:{{game.time?.ts | number:'2.0-0'}}
+              </span>
             </div>
             <ng-template #gameTime>
               {{+game.startTime * 1000 | date: 'd/MM HH:mm'}}
