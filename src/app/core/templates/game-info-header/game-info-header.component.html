@@ -31,14 +31,14 @@
       class="team1"
       [appNoLink]="true"
       [routerLink]="'/dashboard/football/'"
-      [queryParams]="{'team_id':game.team1.id}"
-    >{{game.team1.name}}</a>
-    <div class="score">{{game.score}}</div>
+      [queryParams]="{'team_id':game.home.id}"
+    >{{game.home.name}}</a>
+    <div class="score">{{game.scores}}</div>
     <a
       class="team2"
       [appNoLink]="true"
       [routerLink]="'/dashboard/football/'"
-      [queryParams]="{'team_id':game.team2.id}"
-    >{{game.team2.name}}</a>
+      [queryParams]="{'team_id':game.away.id}"
+    >{{game.away.name}}</a>
   </div>
 </div>

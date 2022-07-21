@@ -30,11 +30,11 @@ export enum SportID {
 
 export const oddsDictionary: OddsDictionaryInterface = {
   [SportID.Football]: {
-    '1X2' : 1,
-    Handicap : 2,
-    Total : 3,
-    HT_Handicap : 5,
-    HT_Total : 6,
+    '1X2': 1,
+    Handicap: 2,
+    Total: 3,
+    HT_Handicap: 5,
+    HT_Total: 6,
     HT_1X2: 8,
   },
   [SportID.Basketball]: {
@@ -94,9 +94,9 @@ export interface Extra {
 export interface Game {
   'league': Country;
   'time': Time;
-  'team1': Country;
-  'team2': Country;
-  'score': string;
+  'home': Country;
+  'away': Country;
+  'scores': string;
   'markets'?: Market[];
   'status': string;
 }
