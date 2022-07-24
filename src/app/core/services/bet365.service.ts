@@ -45,20 +45,20 @@ export class Bet365Service {
     });
   }
 
-  football_odds(game_id: string, markets: string): Observable<Game> {
+  football_odds(event_id: string, odds_market: string): Observable<Game> {
     return this.http.get<Game>('/api/v1/football/game', {
       params: {
-        game_id,
-        markets,
+        event_id,
+        odds_market,
       },
     });
   }
 
-  basketball_odds(game_id: string, markets: string): Observable<Game> {
+  basketball_odds(event_id: string, odds_market: string): Observable<Game> {
     return this.http.get<Game>('/api/v1/basketball/game', {
       params: {
-        game_id,
-        markets,
+        event_id,
+        odds_market,
       },
     });
   }
