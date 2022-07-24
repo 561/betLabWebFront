@@ -7,9 +7,8 @@
         onerror="this.style.display='none'"
       >
       <a
-        [appNoLink]="true"
-        [routerLink]="'/dashboard/football/'"
-        [queryParams]="{'league_id':game.league.id}"
+        [routerLink]="'/dashboard/' + sport + '/'"
+        [queryParams]="{'league_id':game.league.id, 'search_value': game.league.name}"
       >{{game.league.name}}</a>
     </div>
     <p class="time">
@@ -29,16 +28,14 @@
   <div class="teams-wrapper">
     <a
       class="team1"
-      [appNoLink]="true"
-      [routerLink]="'/dashboard/football/'"
-      [queryParams]="{'team_id':game.home.id}"
+      [routerLink]="'/dashboard/' + sport + '/'"
+      [queryParams]="{'team_id':game.home.id, 'search_value': game.home.name}"
     >{{game.home.name}}</a>
     <div class="score">{{game.scores}}</div>
     <a
       class="team2"
-      [appNoLink]="true"
-      [routerLink]="'/dashboard/football/'"
-      [queryParams]="{'team_id':game.away.id}"
+      [routerLink]="'/dashboard/' + sport + '/'"
+      [queryParams]="{'team_id':game.away.id, 'search_value': game.away.name}"
     >{{game.away.name}}</a>
   </div>
 </div>

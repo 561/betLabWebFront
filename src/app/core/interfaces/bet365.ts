@@ -158,3 +158,9 @@ export interface Odd {
   game_time: number;
   rating: number[];
 }
+
+
+export interface SearchData {
+  searchId: string;
+  searchValue: string;
+}

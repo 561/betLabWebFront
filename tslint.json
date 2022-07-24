@@ -46,7 +46,10 @@
       true,
       140
     ],
-    "member-access": [true, "no-public"],
+    "member-access": [
+      true,
+      "no-public"
+    ],
     "member-ordering": [
       true,
       {
@@ -58,7 +61,10 @@
         ]
       }
     ],
-    "no-consecutive-blank-lines": [true, 2],
+    "no-consecutive-blank-lines": [
+      true,
+      2
+    ],
     "no-console": [
       true,
       "debug",
@@ -76,6 +82,7 @@
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
+    "no-string-literal": false,
     "object-literal-key-quotes": [
       true,
       "as-needed"
@@ -100,8 +107,18 @@
         "named": "never"
       }
     },
-    "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
-    "typedef": [true, "call-signature", "parameter"],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter"
+    ],
     "no-boolean-literal-compare": true,
     "no-conditional-assignment": true,
     "no-conflicting-lifecycle": true,
@@ -136,7 +153,9 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "variable-name": {
-      "options": ["allow-snake-case"]
+      "options": [
+        "allow-snake-case"
+      ]
     },
     "whitespace": {
       "options": [

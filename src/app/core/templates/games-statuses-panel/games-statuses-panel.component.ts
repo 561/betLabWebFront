@@ -3,6 +3,7 @@ import { Bet365Service } from '../../services/bet365.service';
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GamesService } from '../../../sports/games.service';
+import { SearchData } from '../../interfaces/bet365';
 
 @Component({
   selector: 'app-games-statuses-panel',
@@ -12,7 +13,7 @@ import { GamesService } from '../../../sports/games.service';
 export class GamesStatusesPanelComponent implements OnInit, OnDestroy {
   queryParams: Params;
   typeToggle: string;
-  searchData: string;
+  searchData: SearchData;
   @Input() sport: string;
   destroy$ = new Subject<void>();
 
@@ -26,6 +27,10 @@ export class GamesStatusesPanelComponent implements OnInit, OnDestroy {
     activatedRoute.queryParams.subscribe(
       (queryParam: Params) => {
         this.queryParams = queryParam;
+        const searchId = queryParam['team_id'] || queryParam['league_id'];
+        if (searchId) {
+          this.searchData = { searchId, searchValue: queryParam['search_value'] };
+        }
       },
     );
   }

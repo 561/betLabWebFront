@@ -5,6 +5,7 @@
 .info-wrapper {
 
   a {
+    color: var(--text-color);
     align-self: center;
   }
 
@@ -56,6 +57,7 @@
 
   .up-line {
     font-size: 20px;
+    padding: 10px;
 
     @media screen and (max-width: 1080px) {
       font-size: 15px;

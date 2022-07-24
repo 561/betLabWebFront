@@ -9,9 +9,6 @@ mat-button-toggle-group, mat-progress-spinner {
 
 .list, .error {
   margin: 10px 20%;
-  @media screen and (max-width: 1400px) {
-    margin: 10px 10%;
-  }
   @media screen and (max-width: 1080px) {
     margin: 10px 0;
   }
@@ -44,10 +41,27 @@ mat-button-toggle-group, mat-progress-spinner {
   }
 }
 
-mat-paginator {
-  margin-top: -52px;
+.header-wrapper {
+  display: flex;
+
+  mat-paginator {
+    position: fixed;
+    right: 0;
+    margin-left: auto;
+  }
+
+  app-games-statuses-panel {
+    position: relative;
+    margin: 0 auto;
+  }
+
   @media screen and (max-width: 1080px) {
     margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    mat-paginator {
+      position: relative;
+    }
   }
 
   ::ng-deep .mat-paginator-page-size {

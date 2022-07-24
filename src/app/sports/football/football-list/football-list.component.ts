@@ -17,7 +17,6 @@ export class FootballListComponent implements OnInit, OnDestroy {
   countOfGames: number;
   perPage: number;
   typeOfGames: string;
-  searchItem: string;
   queryParams: Params;
   loading = true;
   sportID = SportID.Football;
@@ -40,7 +39,6 @@ export class FootballListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.clearSearchSubscribe();
     this.gamesService.getStatusOfGames().pipe(
       takeUntil(this.unsubscribe$),
       tap((typeOfGames) => {
@@ -76,25 +74,7 @@ export class FootballListComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  private clearSearchSubscribe(): void {
-    this.gamesService.getClearSearch().pipe(
-      takeUntil(this.unsubscribe$),
-      tap(() => this.queryParams = {}),
-      switchMap(typeOfGames => {
-        return this.gamesService.getListOfGames(this.typeOfGames, this.sportID, 1, 100);
-      }),
-    ).subscribe((response) => {
-      this.updateData(response);
-    });
-  }
-
   private updateData(response: GamesList): void {
-    if (Object.keys(this.queryParams).includes('league_id')) {
-      this.searchItem = '123';
-    }
-    if (Object.keys(this.queryParams).includes('league_id')) {
-      this.searchItem = '456';
-    }
     if (Array.isArray(response.results)) {
       this.games = response.results;
       this.countOfGames = response.pager.total;

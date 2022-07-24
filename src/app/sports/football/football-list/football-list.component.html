@@ -1,8 +1,7 @@
-<app-games-statuses-panel
-  [sport]="'football'"
-></app-games-statuses-panel>
-<div class="search-items">
-  <app-search-item *ngIf="searchItem" [searchItem]="searchItem"></app-search-item>
+<div class="header-wrapper">
+  <app-games-statuses-panel
+    [sport]="'football'"
+  ></app-games-statuses-panel>
   <mat-paginator
     aria-label="Select page"
     [length]="countOfGames"
