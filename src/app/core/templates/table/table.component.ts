@@ -27,9 +27,6 @@ export class TableComponent implements OnInit {
 
 
   getRatingColor(rating: number, odd: Odd, row?: number): string {
-    if (!odd.rating[0]) {
-      return `210, 210, 210`;
-    }
     const green = rating > 0 ? 200 : 100;
     const red = rating < 0 ? 200 : 100;
     const ratio = Math.abs(rating / this.signalRating);
@@ -41,6 +38,12 @@ export class TableComponent implements OnInit {
     }
     if (row) {
       return this.getProgruz(row, odd, opacity);
+    }
+    if (this.market.name.includes('Handicap') && Math.abs(odd.row2) <= 0.25 && odd.row1 && Math.abs(odd.row1 - 1.9) > 0.2) {
+      return `210, 210, 210`;
+    }
+    if (this.market.name.includes('Total') && odd.row2 - odd.ss[0] - odd.ss[1] === 0.5 && odd.row1 && Math.abs(odd.row1 - 1.9) > 0.2) {
+      return `210, 210, 210`;
     }
     return `${red}, ${green}, 100, ${opacity}`;
   }
